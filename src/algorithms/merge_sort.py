@@ -5,14 +5,14 @@ def merge_sort(arr):
     mid = len(arr) // 2
     left_half = arr[:mid]
     right_half = arr[mid:]
-
-
     left_half = merge_sort(left_half)
     right_half = merge_sort(right_half)
 
     return merge(left_half, right_half)
 
+
 def merge(left, right):
+    print(left, right)
     result = []
     i = j = 0
 
@@ -24,7 +24,6 @@ def merge(left, right):
             result.append(right[j])
             j += 1
 
-
     result.extend(left[i:])
     result.extend(right[j:])
 
@@ -34,4 +33,3 @@ def merge(left, right):
 arr = [6, 2, 8, 1, 4, 9, 3, 5, 7]
 sorted_arr = merge_sort(arr)
 print(sorted_arr)  # Output: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
