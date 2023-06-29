@@ -4,6 +4,7 @@ class TreeNode:
         self.left = None
         self.right = None
 
+
 class BinarySearchTree:
     def __init__(self):
         self.root = None
@@ -39,6 +40,7 @@ class BinarySearchTree:
             return self._search_recursive(data, node.left)
         else:
             return self._search_recursive(data, node.right)
+
 
 bst = BinarySearchTree()
 bst.insert(10)
