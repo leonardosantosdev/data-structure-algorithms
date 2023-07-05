@@ -2,6 +2,9 @@ class MinHeap:
     def __init__(self):
         self.heap = []
 
+    def print_heap(self):
+        print(self.heap)
+
     def parent(self, i):
         return (i - 1) // 2
 
@@ -28,22 +31,6 @@ class MinHeap:
 
         return min_value
     
-    def remove(self, value):
-        if value not in self.heap:
-            raise ValueError("Value not found in the heap.")
-
-        # Find the index of the value to remove
-        index = self.heap.index(value)
-
-        # Swap the value with the last element
-        self.heap[index] = self.heap[-1]
-        self.heap.pop()
-
-        # Restore the heap property
-        if index < len(self.heap):
-            self._heapify_down(index)
-            self._heapify_up(index)
-
     def print_min(self):
         print(self.heap[0])
 
@@ -51,7 +38,6 @@ class MinHeap:
         while i > 0 and self.heap[i] < self.heap[self.parent(i)]:
             self.heap[i], self.heap[self.parent(i)] = self.heap[self.parent(i)], self.heap[i]
             i = self.parent(i)
-            [1, 3, 8, 5]
 
     def _heapify_down(self, i):
         smallest = i
@@ -78,8 +64,4 @@ heap.insert(3)
 heap.insert(8)
 heap.insert(1)
 heap.insert(10)
-
-# Extract the minimum element
-min_value = heap.extract_min()
-print(min_value)  # Output: 1
-print()
+heap.print_heap()

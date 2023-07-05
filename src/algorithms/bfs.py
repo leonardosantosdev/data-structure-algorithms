@@ -17,14 +17,26 @@ def bfs(graph, start):
     return result
 
 
+# graph = {
+#     'A': ['B', 'C'],
+#     'B': ['D', 'E'],
+#     'C': ['F'],
+#     'D': [],
+#     'E': ['F'],
+#     'F': []
+# }
 graph = {
-    'A': ['B', 'C'],
-    'B': ['D', 'E'],
-    'C': ['F'],
+    'A': ['B', 'G'],
+    'B': ['C', 'D', 'E'],
+    'C': [],
     'D': [],
     'E': ['F'],
-    'F': []
+    'F': [],
+    'G': ['H'],
+    'H': ['I'],
+    'I': [],
 }
+
 
 result = bfs(graph, 'A')
 print(result)

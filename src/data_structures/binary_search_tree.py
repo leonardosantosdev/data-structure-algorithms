@@ -1,6 +1,6 @@
 class TreeNode:
-    def __init__(self, data):
-        self.data = data
+    def __init__(self, value):
+        self.value = value
         self.left = None
         self.right = None
 
@@ -9,47 +9,44 @@ class BinarySearchTree:
     def __init__(self):
         self.root = None
 
-    def insert(self, data):
+    def insert(self, value):
         if self.root is None:
-            self.root = TreeNode(data)
+            self.root = TreeNode(value)
         else:
-            self._insert_recursive(data, self.root)
+            self._insert_recursive(self.root, value)
 
-    def _insert_recursive(self, data, node):
-        if data < node.data:
+    def _insert_recursive(self, node, value):
+        if value < node.value:
             if node.left is None:
-                node.left = TreeNode(data)
+                node.left = TreeNode(value)
             else:
-                self._insert_recursive(data, node.left)
-        elif data > node.data:
+                self._insert_recursive(node.left, value)
+        elif value > node.value:
             if node.right is None:
-                node.right = TreeNode(data)
+                node.right = TreeNode(value)
             else:
-                self._insert_recursive(data, node.right)
-        else:
-            # Valor duplicado, fazer tratamento conforme sua necessidade
-            pass
+                self._insert_recursive(node.right, value)
 
-    def search(self, data):
-        return self._search_recursive(data, self.root)
+    def search(self, value):
+        return self._search_recursive(self.root, value)
 
-    def _search_recursive(self, data, node):
-        if node is None or node.data == data:
+    def _search_recursive(self, node, value):
+        if node is None or node.value == value:
             return node
-        elif data < node.data:
-            return self._search_recursive(data, node.left)
+
+        if value < node.value:
+            return self._search_recursive(node.left, value)
         else:
-            return self._search_recursive(data, node.right)
+            return self._search_recursive(node.right, value)
 
 
 bst = BinarySearchTree()
-bst.insert(10)
-bst.insert(5)
-bst.insert(15)
-bst.insert(18)
-bst.insert(2)
-bst.insert(3)
-bst.insert(7)
 
-node = bst.search(5)
-print(node.data)  # Saída: 5
+# Inserting values into the BST
+bst.insert(5)
+bst.insert(2)
+bst.insert(7)
+bst.insert(1)
+bst.insert(4)
+bst.insert(6)
+bst.insert(8)
